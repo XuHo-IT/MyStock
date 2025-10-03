@@ -1,0 +1,53 @@
+﻿@model MyStock.ModelsData.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-success text-center mb-4">✏ Edit Product</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow border-0">
+            <div class="card-header bg-warning text-dark fw-bold">
+                Update Product Details
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    <input type="hidden" asp-for="Productid" />
+
+                    <div class="mb-3">
+                        <label asp-for="Productname" class="form-label fw-bold"></label>
+                        <input asp-for="Productname" class="form-control border-success" />
+                        <span asp-validation-for="Productname" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Unitprice" class="form-label fw-bold"></label>
+                        <input asp-for="Unitprice" class="form-control border-success" />
+                        <span asp-validation-for="Unitprice" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Unitsinstock" class="form-label fw-bold"></label>
+                        <input asp-for="Unitsinstock" class="form-control border-success" />
+                        <span asp-validation-for="Unitsinstock" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">⬅ Back</a>
+                        <input type="submit" value="💾 Save" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

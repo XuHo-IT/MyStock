@@ -1,0 +1,52 @@
+﻿@model MyStock.ModelsData.Product
+
+@{
+    ViewData["Title"] = "Create Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-success text-center mb-4">➕ Add New Product</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow border-0">
+            <div class="card-header bg-warning text-dark fw-bold">
+                Product Information
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Productname" class="control-label fw-bold text-success"></label>
+                        <input asp-for="Productname" class="form-control border-success" placeholder="Enter product name" />
+                        <span asp-validation-for="Productname" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Unitprice" class="control-label fw-bold text-success"></label>
+                        <input asp-for="Unitprice" class="form-control border-success" placeholder="Enter price" />
+                        <span asp-validation-for="Unitprice" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Unitsinstock" class="control-label fw-bold text-success"></label>
+                        <input asp-for="Unitsinstock" class="form-control border-success" placeholder="Enter stock quantity" />
+                        <span asp-validation-for="Unitsinstock" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">⬅ Back</a>
+                        <button type="submit" class="btn btn-success">✅ Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

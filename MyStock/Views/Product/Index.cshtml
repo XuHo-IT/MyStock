@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MyStock.ModelsData.Product>
+
+@{
+    ViewData["Title"] = "Product List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center text-success mb-4">📦 Product List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success mb-3">➕ Create New</a>
+</p>
+
+<table class="table table-bordered table-striped shadow">
+    <thead class="bg-warning text-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Productname)</th>
+            <th>@Html.DisplayNameFor(model => model.Unitprice)</th>
+            <th>@Html.DisplayNameFor(model => model.Unitsinstock)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Productname)</td>
+                <td>@Html.DisplayFor(modelItem => item.Unitprice)</td>
+                <td>@Html.DisplayFor(modelItem => item.Unitsinstock)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Productid" class="btn btn-sm btn-warning">✏ Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Productid" class="btn btn-sm btn-info text-white">🔍 Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Productid" class="btn btn-sm btn-danger">🗑 Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    /* Optional extra polish */
+    h1 {
+        font-weight: bold;
+    }
+
+    table th, table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn {
+        margin: 0 2px;
+    }
+</style>

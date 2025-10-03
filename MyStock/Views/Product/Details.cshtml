@@ -1,0 +1,46 @@
+﻿@model MyStock.ModelsData.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-success text-center mb-4">📦 Product Details</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow border-0">
+            <div class="card-header bg-warning text-dark fw-bold">
+                Product Information
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4 fw-bold text-success">
+                        @Html.DisplayNameFor(model => model.Productname)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Productname)
+                    </dd>
+
+                    <dt class="col-sm-4 fw-bold text-success">
+                        @Html.DisplayNameFor(model => model.Unitprice)
+                    </dt>
+                    <dd class="col-sm-8">
+                        💲 @Html.DisplayFor(model => model.Unitprice)
+                    </dd>
+
+                    <dt class="col-sm-4 fw-bold text-success">
+                        @Html.DisplayNameFor(model => model.Unitsinstock)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Unitsinstock) units
+                    </dd>
+                </dl>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">⬅ Back</a>
+                <a asp-action="Edit" asp-route-id="@Model?.Productid" class="btn btn-success">✏ Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
